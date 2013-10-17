@@ -1,17 +1,20 @@
-import java.awt.*;
 import javax.swing.*;
 import java.util.*;
 import java.awt.event.*;
 
 public class MainGame extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -3276700764283525828L;
 	GraphicsPanel graphics;	//Graphics to draw the map
 	public static final int DELAY = 200;  //Indicates how long to delay between moves
 	ArrayList<Player> players; // List of players, with human as player 0
 
 	//Main method runs the game
 	public static void main(String[] args) {
-		MainGame g = new MainGame();
+		new MainGame();
 	}
 
 	//Default constructor initializes objects and starts the game
@@ -144,8 +147,4 @@ public class MainGame extends JFrame{
 		public void keyReleased(KeyEvent e){
 		}
 	}
-
-
-
-	
 }

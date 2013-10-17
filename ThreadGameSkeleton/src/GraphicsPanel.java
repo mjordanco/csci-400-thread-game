@@ -8,6 +8,15 @@ public class GraphicsPanel extends JPanel{
 	 * Method GraphicsPanel
 	 * This class keeps track of the player and computer locations and directions
 	 * and draws the map
+	 * 
+	 * 
+	 * ASSIGNMENT: Review the synchronized blocks in GraphicsPanel
+	 * 
+	 * The methods isBlocked() and isTarget() should be synchronized on self, 
+	 * so that a running player can't jump in and snag the point or block the space 
+	 * while it is being checked, resulting in an invalid point being added to one 
+	 * of the players, or an invalid board state occupied by two players.
+	 * 
 	 */
 	public static final int MAX_X = 10;		//Maximum x-coordinate
 	public static final int MAX_Y = 10;		//Maximum y-coordinate

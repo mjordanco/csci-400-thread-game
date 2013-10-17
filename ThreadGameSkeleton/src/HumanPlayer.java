@@ -30,13 +30,16 @@ public class HumanPlayer extends Player {
 			break;
 		}
 		
-		if (isMovementValid(movementArray[0], movementArray[1])) {
-			location.move(movementArray[0], movementArray[1]);
+		
+		synchronized (graphics) {
+			if (isMovementValid(movementArray[0], movementArray[1])) {
+				location.move(movementArray[0], movementArray[1]);
+			}
+			if (graphics.checkForPoint(location)) {
+				points++;
+			}
 		}
 		
-		if (graphics.checkForPoint(location)) {
-			points++;
-		}
 	}
 	
 }

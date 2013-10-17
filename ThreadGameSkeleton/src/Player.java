@@ -1,4 +1,4 @@
-import java.awt.Point;
+
 
 
 public abstract class Player implements Runnable{
@@ -55,7 +55,7 @@ public abstract class Player implements Runnable{
 	
 	public Boolean isMovementValid(int dx, int dy) {
 		Location potential = new Location(location.getX() + dx, location.getY() + dy);
-		return !graphics.isBlocked(potential, false);
+		return !graphics.isBlocked(potential, true);
 	}
 
 	public Location getLocation() {

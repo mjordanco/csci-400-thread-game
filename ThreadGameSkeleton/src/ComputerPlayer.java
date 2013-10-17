@@ -22,10 +22,12 @@ public class ComputerPlayer extends Player {
 		for (int dx = -1; dx <= 1; dx++) {
 			for (int dy = -1; dy <= 1; dy++) {
 				Location potential = new Location(location.getX() + dx, location.getY() + dy);
-				if (graphics.checkForPoint(potential)) {
-					points++;
-					location.move(dx, dy);
-					return;
+				synchronized (graphics) {
+					if (graphics.checkForPoint(potential)) {
+						points++;
+						location.move(dx, dy);
+						return;
+					}
 				}
 			}
 		}
@@ -52,15 +54,12 @@ public class ComputerPlayer extends Player {
 			default:
 				break;
 			}
-			if (isMovementValid(dx, dy)) {
-				location.move(dx, dy);
-				break;
+			synchronized (graphics) {
+				if (isMovementValid(dx, dy)) {
+					location.move(dx, dy);
+					break;
+				}
 			}
 		}
-		
-		
 	}
-	
-	
-
 }
