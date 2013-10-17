@@ -3,7 +3,9 @@ import java.awt.Point;
 
 public abstract class Player implements Runnable{
 
-	public static final int MOVE_DELAY = (int)(1000); // 1 FPS
+	public static final int MOVE_DELAY = (int)(300); // 1 FPS
+	
+	protected GraphicsPanel graphics;
 	
 	protected Location location;
 	protected int points;
@@ -12,9 +14,10 @@ public abstract class Player implements Runnable{
 	private boolean running;
 	private Thread thread;
 	
-	public Player() {
+	public Player(GraphicsPanel g) {
 		initLocation();
 		initThread();
+		graphics = g;
 	}
 	
 	public void initThread() {
@@ -48,28 +51,11 @@ public abstract class Player implements Runnable{
 		}
 	}
 
-	private void handleMovement() {
-		int[] movementArray = new int[] {0, 0};
-		switch(direction) {
-		case 'L':
-			movementArray[0] = -1;
-			break;
-		case 'U':
-			movementArray[1] = -1;
-			break;
-		case 'R':
-			movementArray[0] = 1;
-			break;
-		case 'D':
-			movementArray[1] = 1;
-			break;
-		}
-
-		int newX = location.getX() + movementArray[0];
-		int newY = location.getY() + movementArray[0];
-		
-		location.setX(newX);
-		location.setY(newY);
+	protected abstract void handleMovement();
+	
+	public Boolean isMovementValid(int dx, int dy) {
+		Location potential = new Location(location.getX() + dx, location.getY() + dy);
+		return !graphics.isBlocked(potential, false);
 	}
 
 	public Location getLocation() {

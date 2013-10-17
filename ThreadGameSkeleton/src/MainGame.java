@@ -21,9 +21,9 @@ public class MainGame extends JFrame{
 		graphics = new GraphicsPanel();
 		// Create the list of players
 		players = new ArrayList<Player>();
-		players.add(new HumanPlayer());
-		players.add(new ComputerPlayer());
-		players.add(new ComputerPlayer());
+		players.add(new HumanPlayer(graphics));
+		players.add(new ComputerPlayer(graphics));
+		players.add(new ComputerPlayer(graphics));
 
 		// Grid can be initialized as soon as the players are added
 		graphics.initialize(players); 

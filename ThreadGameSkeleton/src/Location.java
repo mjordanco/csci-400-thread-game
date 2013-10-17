@@ -29,6 +29,11 @@ public class Location {
     public void setY(int y){
     	myY = y;
     }
+    
+    public void move(int dx, int dy) {
+    	myX += dx;
+    	myY += dy;
+    }
 
 	//Returns true if the x and y coordinate of this location are equal to location l's x and y coordinates
 	//Returns false
